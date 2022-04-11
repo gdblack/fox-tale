@@ -7,7 +7,7 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
     public Image heart1, heart2, heart3;
-    public Sprite heartFull, heartEmpty;
+    public Sprite heartFull, heartHalf, heartEmpty;
 
     private void Awake()
     {
@@ -26,20 +26,45 @@ public class UIController : MonoBehaviour
     }
     public void UpdateHealthDisplay()
     {
+        // 6 health with half incorporated into the mix
+
+
+        // all full = 6
+        // 1 1/2 = 5
+        // 1 0 = 4
+        // 1 0 & 1/2 = 3
+        // 2 0 & 1 = 2
+        // 2 0 1 1/2 = 1
+        // 3 0 = 0
         switch(PlayerHealthController.instance.currentHealth)
         {
-            case 3:
+            case 6:
                 heart1.sprite = heartFull;
                 heart2.sprite = heartFull;
                 heart3.sprite = heartFull;
                 break;
-            case 2:
+            case 5:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartFull;
+                heart3.sprite = heartHalf;
+                break;
+            case 4:
                 heart1.sprite = heartFull;
                 heart2.sprite = heartFull;
                 heart3.sprite = heartEmpty;
                 break;
-            case 1:
+            case 3:
                 heart1.sprite = heartFull;
+                heart2.sprite = heartHalf;
+                heart3.sprite = heartEmpty;
+                break;
+            case 2:
+                heart1.sprite = heartFull;
+                heart2.sprite = heartEmpty;
+                heart3.sprite = heartEmpty;
+                break;
+            case 1:
+                heart1.sprite = heartHalf;
                 heart2.sprite = heartEmpty;
                 heart3.sprite = heartEmpty;
                 break;

@@ -4501,6 +4501,7 @@ MonoBehaviour:
   heart2: {fileID: 1607792565}
   heart3: {fileID: 585379529}
   heartFull: {fileID: 8109154662235370213, guid: d9a616f95048ea84e8fc6f7920f846b8, type: 3}
+  heartHalf: {fileID: 2139837793675082937, guid: d9a616f95048ea84e8fc6f7920f846b8, type: 3}
   heartEmpty: {fileID: -4390673095631447188, guid: d9a616f95048ea84e8fc6f7920f846b8, type: 3}
 --- !u!1 &1607792563
 GameObject:
@@ -4631,6 +4632,10 @@ PrefabInstance:
     - target: {fileID: 2066937348305007193, guid: 5f2891c130f79455cab23bfd42630047, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002356280294522665, guid: 5f2891c130f79455cab23bfd42630047, type: 3}
+      propertyPath: invincibleLength
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f2891c130f79455cab23bfd42630047, type: 3}
