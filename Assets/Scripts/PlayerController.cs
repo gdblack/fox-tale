@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
     public float moveSpeed;
     public Rigidbody2D rb2d;
     public float jumpForce;
@@ -18,6 +19,13 @@ public class PlayerController : MonoBehaviour
     private Animator _anim;
     private SpriteRenderer _spriteRenderer;
 
+    public float knockbackLength, knockbackForce;
+    private float knockbackCounter;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -28,39 +36,60 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb2d.velocity = new Vector2(moveSpeed * Input.GetAxisRaw("Horizontal"), rb2d.velocity.y);
-
-        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, _radius, groundLayer);
-        if (_isGrounded)
+        if (knockbackCounter <= 0)
         {
-            _canDoubleJump = true;
-        }
+            rb2d.velocity = new Vector2(moveSpeed * Input.GetAxisRaw("Horizontal"), rb2d.velocity.y);
 
-        if (Input.GetButtonDown("Jump"))
-        {
+            _isGrounded = Physics2D.OverlapCircle(groundCheck.position, _radius, groundLayer);
             if (_isGrounded)
             {
-                rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+                _canDoubleJump = true;
+            }
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                if (_isGrounded)
+                {
+                    rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+                }
+                else
+                {
+                    if (_canDoubleJump)
+                    {
+                        rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+                        _canDoubleJump = false;
+                    }
+                }
+
+            }
+            if (rb2d.velocity.x < 0)
+            {
+                _spriteRenderer.flipX = true;
+            }
+            else if (rb2d.velocity.x > 0)
+            {
+                _spriteRenderer.flipX = false;
+            }
+        } else
+        {
+            knockbackCounter -= Time.deltaTime;
+            if (!_spriteRenderer.flipX)
+            {
+                rb2d.velocity = new Vector2(-knockbackForce, rb2d.velocity.y);
             }
             else
             {
-                if (_canDoubleJump)
-                {
-                    rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-                    _canDoubleJump = false;
-                }
+                rb2d.velocity = new Vector2(knockbackForce, rb2d.velocity.y);
             }
-                
-        }
-        if (rb2d.velocity.x < 0)
-        {
-            _spriteRenderer.flipX = true;
-        }
-        else if (rb2d.velocity.x > 0)
-        {
-            _spriteRenderer.flipX = false;
         }
         _anim.SetFloat("moveSpeed", Mathf.Abs(rb2d.velocity.x));
         _anim.SetBool("isGrounded", _isGrounded);
+    }
+
+    public void KnockBack()
+    {
+        knockbackCounter = knockbackLength;
+        _anim.SetTrigger("hurt");
+        rb2d.velocity = new Vector2(0f, knockbackForce);
     }
 }

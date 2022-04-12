@@ -41,15 +41,26 @@ public class PlayerHealthController : MonoBehaviour
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                // Death
-                gameObject.SetActive(false);
+                // Death - move to level manager
+                // gameObject.SetActive(false);
+                LevelManager.instance.RespawnPlayer();
             }
             else
             {
                 invincibleCounter = invincibleLength;
                 theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 0.5f);
+                PlayerController.instance.KnockBack();
             }
             UIController.instance.UpdateHealthDisplay();
         }
+    }
+    public void HealPlayer()
+    {
+        currentHealth++;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        UIController.instance.UpdateHealthDisplay();
     }
 }

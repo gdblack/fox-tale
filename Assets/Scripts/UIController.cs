@@ -27,15 +27,6 @@ public class UIController : MonoBehaviour
     public void UpdateHealthDisplay()
     {
         // 6 health with half incorporated into the mix
-
-
-        // all full = 6
-        // 1 1/2 = 5
-        // 1 0 = 4
-        // 1 0 & 1/2 = 3
-        // 2 0 & 1 = 2
-        // 2 0 1 1/2 = 1
-        // 3 0 = 0
         switch(PlayerHealthController.instance.currentHealth)
         {
             case 6:
