@@ -93,4 +93,8 @@ public class PlayerController : MonoBehaviour
         _anim.SetTrigger("hurt");
         rb2d.velocity = new Vector2(0f, knockbackForce);
     }
+    public void Bounce()
+    {
+        rb2d.velocity = new Vector2(rb2d.velocity.x, bounceForce);
+    }
 }
