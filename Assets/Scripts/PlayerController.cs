@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public float knockbackLength, knockbackForce;
     private float knockbackCounter;
+    public float bounceForce;
 
     private void Awake()
     {
