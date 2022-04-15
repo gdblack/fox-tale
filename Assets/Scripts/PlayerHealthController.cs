@@ -45,12 +45,14 @@ public class PlayerHealthController : MonoBehaviour
                 // Death - move to level manager
                 // gameObject.SetActive(false);
                 Instantiate(deathEffect, transform.position, transform.rotation);
+                AudioManager.instance.PlaySFX(8);
                 LevelManager.instance.RespawnPlayer();
             }
             else
             {
                 invincibleCounter = invincibleLength;
                 theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 0.5f);
+                AudioManager.instance.PlaySFX(9);
                 PlayerController.instance.KnockBack();
             }
             UIController.instance.UpdateHealthDisplay();

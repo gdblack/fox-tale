@@ -36,6 +36,7 @@ public class Stompbox : MonoBehaviour
                 // drop an item
                 Instantiate(collectible, other.transform.position, other.transform.rotation);
             }
+            AudioManager.instance.PlaySFX(3);
         }
     }
 }

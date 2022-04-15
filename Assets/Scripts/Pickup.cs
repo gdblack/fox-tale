@@ -30,6 +30,7 @@ public class Pickup : MonoBehaviour
                 Destroy(gameObject);
                 ApplyEffect();
                 UIController.instance.UpdateGemCount();
+                AudioManager.instance.PlaySFX(6);
             }
             if (isHeal)
             {
@@ -39,6 +40,7 @@ public class Pickup : MonoBehaviour
                     isCollected = true;
                     Destroy(gameObject);
                     ApplyEffect();
+                    AudioManager.instance.PlaySFX(7);
                 }
             }
         }
