@@ -5,6 +5,10 @@ using UnityEngine;
 public class Stompbox : MonoBehaviour
 {
     public GameObject deathEffect;
+    public GameObject collectible;
+    [Range(0, 100)]
+    public float chanceToDrop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +28,14 @@ public class Stompbox : MonoBehaviour
             other.transform.parent.gameObject.SetActive(false);
             Instantiate(deathEffect, other.transform.position, other.transform.rotation);
             PlayerController.instance.Bounce();
+
+            // pick a random number between 0 - 100
+            float dropSelect = Random.Range(0, 100);
+            if (dropSelect <= chanceToDrop)
+            {
+                // drop an item
+                Instantiate(collectible, other.transform.position, other.transform.rotation);
+            }
         }
     }
 }
