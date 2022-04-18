@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     public float waitToRespawn;
     public int gemsCollected;
+    public string levelToLoad;
 
     private void Awake()
     {
@@ -31,10 +33,27 @@ public class LevelManager : MonoBehaviour
     private IEnumerator RespawnCoroutine()
     {
         PlayerController.instance.gameObject.SetActive(false);
-        yield return new WaitForSeconds(waitToRespawn);
+        yield return new WaitForSeconds(waitToRespawn - (1f / UIController.instance.fadeSpeed));
+        UIController.instance.FadeToBlack();
+        yield return new WaitForSeconds((1f / UIController.instance.fadeSpeed) + 0.2f);
+        UIController.instance.FadeFromBlack();
         PlayerController.instance.gameObject.SetActive(true);
         PlayerController.instance.transform.position = CheckpointController.instance.spawnPoint;
         PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth;
         UIController.instance.UpdateHealthDisplay();
+    }
+    public void EndLevel()
+    {
+        StartCoroutine(EndLevelCoroutine());
+    }
+    public IEnumerator EndLevelCoroutine()
+    {
+        PlayerController.instance.stopInput = true;
+        CameraController.instance.stopFollow = true;
+        UIController.instance.levelCompleteText.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        UIController.instance.FadeToBlack();
+        yield return new WaitForSeconds(1 / UIController.instance.fadeSpeed + 0.25f);
+        SceneManager.LoadScene(levelToLoad);
     }
 }
