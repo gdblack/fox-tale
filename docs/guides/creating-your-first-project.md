@@ -1,4 +1,5 @@
 ---
+cover: ../.gitbook/assets/Screen Shot 2022-04-19 at 5.35.13 PM (1).png
 coverY: 0
 ---
 
