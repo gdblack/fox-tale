@@ -12003,7 +12003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4556438091574076829, guid: 393626619207447d5a1d016774792f50, type: 3}
       propertyPath: levelToLoad
-      value: Level02
+      value: Level Select
       objectReference: {fileID: 0}
     - target: {fileID: 7370129323831042597, guid: 393626619207447d5a1d016774792f50, type: 3}
       propertyPath: maxHeight

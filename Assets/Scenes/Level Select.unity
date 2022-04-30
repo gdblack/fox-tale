@@ -7974,6 +7974,10 @@ PrefabInstance:
       propertyPath: levelToLoad
       value: Level02
       objectReference: {fileID: 0}
+    - target: {fileID: 8763325326861727631, guid: 94734ce81137d4f17972e3e935035b70, type: 3}
+      propertyPath: levelToCheck
+      value: Level01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94734ce81137d4f17972e3e935035b70, type: 3}
 --- !u!114 &1736242110 stripped
@@ -8346,6 +8350,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8763325326861727631, guid: 94734ce81137d4f17972e3e935035b70, type: 3}
       propertyPath: levelToLoad
+      value: Level01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8763325326861727631, guid: 94734ce81137d4f17972e3e935035b70, type: 3}
+      propertyPath: levelToCheck
       value: Level01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
