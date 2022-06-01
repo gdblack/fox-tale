@@ -777,6 +777,10 @@ MonoBehaviour:
   fadeSpeed: 4
   levelInfoPanel: {fileID: 1363520535}
   levelName: {fileID: 1537804811}
+  gemsFound: {fileID: 89482557}
+  gemsTarget: {fileID: 1960970902}
+  bestTime: {fileID: 604405093}
+  timeTarget: {fileID: 1055449602}
 --- !u!1001 &733633605
 PrefabInstance:
   m_ObjectHideFlags: 0
