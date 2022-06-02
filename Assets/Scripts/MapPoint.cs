@@ -15,6 +15,14 @@ public class MapPoint : MonoBehaviour
     {
         if (isLevel && !string.IsNullOrEmpty(levelToLoad))
         {
+            if (PlayerPrefs.HasKey($"{levelToLoad}_gems"))
+            {
+                gemsCollected = PlayerPrefs.GetInt($"{levelToLoad}_gems");
+            }
+            if (PlayerPrefs.HasKey($"{levelToLoad}_time"))
+            {
+                bestTime = PlayerPrefs.GetFloat($"{levelToLoad}_time");
+            }
             isLocked = true;
 
             if (!string.IsNullOrEmpty(levelToCheck))
