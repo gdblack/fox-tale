@@ -58,8 +58,28 @@ public class LevelManager : MonoBehaviour
 
         // store lock/unlock in player prefs - key/val pair
         PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}_unlocked", 1);
-        PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}_gems", gemsCollected);
-        PlayerPrefs.SetFloat($"{SceneManager.GetActiveScene().name}_time", timeInLevel);
+        if (PlayerPrefs.HasKey($"{SceneManager.GetActiveScene().name}_gems"))
+        {
+            if (gemsCollected > PlayerPrefs.GetInt($"{SceneManager.GetActiveScene().name}"))
+            {
+                PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}_gems", gemsCollected);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}_gems", gemsCollected);
+        }
+        if (PlayerPrefs.HasKey($"{SceneManager.GetActiveScene().name}"))
+        {
+            if (timeInLevel < PlayerPrefs.GetFloat($"{SceneManager.GetActiveScene().name}_time"))
+            {
+                PlayerPrefs.SetFloat($"{SceneManager.GetActiveScene().name}_time", timeInLevel);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetFloat($"{SceneManager.GetActiveScene().name}_time", timeInLevel);
+        }
 
         SceneManager.LoadScene(levelToLoad);
     }
