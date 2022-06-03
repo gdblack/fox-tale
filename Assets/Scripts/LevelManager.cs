@@ -58,6 +58,8 @@ public class LevelManager : MonoBehaviour
 
         // store lock/unlock in player prefs - key/val pair
         PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}_unlocked", 1);
+        PlayerPrefs.SetString("CurrentLevel", SceneManager.GetActiveScene().name);
+
         if (PlayerPrefs.HasKey($"{SceneManager.GetActiveScene().name}_gems"))
         {
             if (gemsCollected > PlayerPrefs.GetInt($"{SceneManager.GetActiveScene().name}"))
