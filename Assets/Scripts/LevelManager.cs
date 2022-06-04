@@ -49,6 +49,7 @@ public class LevelManager : MonoBehaviour
     }
     public IEnumerator EndLevelCoroutine()
     {
+        AudioManager.instance.PlayLevelVictory();
         PlayerController.instance.stopInput = true;
         CameraController.instance.stopFollow = true;
         UIController.instance.levelCompleteText.SetActive(true);
@@ -71,7 +72,7 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}_gems", gemsCollected);
         }
-        if (PlayerPrefs.HasKey($"{SceneManager.GetActiveScene().name}"))
+        if (PlayerPrefs.HasKey($"{SceneManager.GetActiveScene().name}_time"))
         {
             if (timeInLevel < PlayerPrefs.GetFloat($"{SceneManager.GetActiveScene().name}_time"))
             {
