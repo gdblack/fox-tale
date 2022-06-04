@@ -55,7 +55,7 @@ public class LevelManager : MonoBehaviour
         UIController.instance.levelCompleteText.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         UIController.instance.FadeToBlack();
-        yield return new WaitForSeconds(1 / UIController.instance.fadeSpeed + 0.25f);
+        yield return new WaitForSeconds(1 / UIController.instance.fadeSpeed + 3f);
 
         // store lock/unlock in player prefs - key/val pair
         PlayerPrefs.SetInt($"{SceneManager.GetActiveScene().name}_unlocked", 1);
