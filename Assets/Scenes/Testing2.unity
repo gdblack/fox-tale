@@ -6698,7 +6698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198454728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.6, y: 3.4, z: 0}
+  m_LocalPosition: {x: 75.6, y: 2.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 509453158}
@@ -6723,6 +6723,9 @@ MonoBehaviour:
   - {fileID: 163043703}
   - {fileID: 890294625}
   moveSpeed: 2
+  chaseSpeed: 10
+  distanceToAttackPlayer: 5
+  waitAfterAttack: 2
   spriteRenderer: {fileID: 509453159}
 --- !u!1001 &1377239965
 PrefabInstance:
